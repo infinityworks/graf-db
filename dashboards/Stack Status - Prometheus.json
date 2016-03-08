@@ -1,0 +1,405 @@
+{
+  "id": 2,
+  "title": "Stack Status - Prometheus",
+  "originalTitle": "Stack Status - Prometheus",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "25px",
+      "panels": [
+        {
+          "content": "# Stack Status\n\nThis dashboard was put together to demonstrate service & stack level metrics pulled from the Rancher API. \nThis is achieved through the rancher-api-integration service, a simple little application that's lightweight and open-source.\n\nThe benefit here being you can customise such dashboards to report on the health of your applications and services running on-top of rancher without having to provide access to the Rancher UI itself.",
+          "editable": true,
+          "error": false,
+          "id": 8,
+          "isNew": true,
+          "links": [],
+          "mode": "markdown",
+          "span": 12,
+          "style": {},
+          "title": "Summary",
+          "type": "text"
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "25px",
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 3,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "calculatedInterval": "1m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "rancher_services{name=~\".*/prometheus\"}",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": "0,1,1",
+          "title": "Prometheus",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "Healthy",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "Degraded",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 4,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "calculatedInterval": "1m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "rancher_services{name=~\".*/grafana\"}",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": "0,1,1",
+          "title": "Grafana",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "Healthy",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "Degraded",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 5,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "calculatedInterval": "1m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "rancher_services{name=~\".*/node_exporter\"}",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": "0,1,1",
+          "title": "Node Exporter",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "Healthy",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "Degraded",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        }
+      ],
+      "title": "Row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "100px",
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 7,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "calculatedInterval": "1m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "rancher_services{name=~\".*/ranch_eye\"}",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": "0,1,1",
+          "title": "Ranch-Eye",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "Healthy",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "Degraded",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 6,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "calculatedInterval": "1m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "rancher_services{name=~\".*/rancher_api_integration\"}",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": "0,1,1",
+          "title": "API Integration",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "Healthy",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "Degraded",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        }
+      ],
+      "title": "New row"
+    }
+  ],
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "collapse": false,
+    "enable": true,
+    "notice": false,
+    "now": true,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "status": "Stable",
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ],
+    "type": "timepicker"
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": "5s",
+  "schemaVersion": 8,
+  "version": 23,
+  "links": []
+}
