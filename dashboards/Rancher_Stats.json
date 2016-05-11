@@ -1,8 +1,10 @@
 {
   "id": 3,
-  "title": "Rancher Server Stats",
-  "originalTitle": "Rancher Server Stats",
-  "tags": [],
+  "title": "Rancher Stats",
+  "originalTitle": "Rancher Stats",
+  "tags": [
+    "Rancher"
+  ],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
@@ -15,7 +17,7 @@
       "height": "25px",
       "panels": [
         {
-          "content": "# Rancher Server Statistics\n\nThis dashboard exports metrics from within the rancher server container its-self. This is done through modifying the `graphite.host` value in the rancher API. This is for now a manual step and requires a restart of the rancher server container to take affect. Instructions on how to do this can be found [here](https://github.com/Rucknar/Guide_Rancher_Monitoring).\n",
+          "content": "# Rancher Statistics\n\nThis dashboard exports metrics from within the rancher server container its-self. This is done through modifying the `graphite.host` value in the rancher API. This is for now a manual step and requires a restart of the rancher server container to take affect. Instructions on how to do this can be found [here](https://github.com/infinityworksltd/Guide_Rancher_Monitoring).\n",
           "editable": true,
           "error": false,
           "id": 16,
@@ -24,11 +26,12 @@
           "mode": "markdown",
           "span": 12,
           "style": {},
-          "title": "Summary",
+          "title": "",
+          "transparent": true,
           "type": "text"
         }
       ],
-      "title": "New row"
+      "title": "Text"
     },
     {
       "collapse": false,
@@ -48,6 +51,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 7,
           "interval": null,
           "links": [],
@@ -88,6 +98,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.os.SystemLoadAverage",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A24%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.os.SystemLoadAverage\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -110,7 +121,7 @@
               "target": "movingAverage(servers.944b1a09387f.jvm.os.SystemLoadAverage, '30min')"
             }
           ],
-          "thresholds": "0,5,8",
+          "thresholds": "5,8",
           "title": "Rancher Load Average",
           "transparent": false,
           "type": "singlestat",
@@ -138,6 +149,13 @@
           "editable": true,
           "error": false,
           "format": "ms",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 10,
           "interval": null,
           "links": [],
@@ -179,6 +197,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.runtime.Uptime",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A24%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.runtime.Uptime\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "B",
@@ -201,7 +220,7 @@
               "target": "servers.944b1a09387f.jvm.runtime.Uptime"
             }
           ],
-          "thresholds": "0,600000,6000000",
+          "thresholds": "600000,6000000",
           "title": "Process Uptime",
           "transparent": false,
           "type": "singlestat",
@@ -223,12 +242,6 @@
           "error": false,
           "fill": 2,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -236,7 +249,6 @@
           },
           "id": 8,
           "interval": "> 10s",
-          "leftYAxisLabel": "",
           "legend": {
             "avg": false,
             "current": false,
@@ -255,7 +267,6 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "rightYAxisLabel": "",
           "seriesOverrides": [],
           "span": 6,
           "stack": true,
@@ -283,6 +294,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.memory.HeapMemoryUsage.used",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223601s%22%2C%22end_input%22%3A%222015-11-10%2016%3A26%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.memory.HeapMemoryUsage.used\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -326,6 +338,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.memory.HeapMemoryUsage.committed",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223601s%22%2C%22end_input%22%3A%222015-11-10%2016%3A26%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.memory.HeapMemoryUsage.committed\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "B",
@@ -352,20 +365,36 @@
           "timeShift": null,
           "title": "JVM Heap Usage",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "transparent": false,
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "bytes",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Stats 1"
     },
     {
       "collapse": false,
@@ -385,6 +414,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 15,
           "interval": null,
           "links": [],
@@ -425,6 +461,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.gc.MarkSweepCompact.CollectionCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%2221600s%22%2C%22end_input%22%3A%222015-11-11%2010%3A44%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.gc.MarkSweepCompact.CollectionCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -468,12 +505,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -528,6 +559,7 @@
               "intervalFactor": 2,
               "measurement": "metric.event.failed.event_failed_agent_request.Count",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%2221600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A3%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"metric.event.failed.event_failed_agent_request.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -573,6 +605,7 @@
               "intervalFactor": 2,
               "measurement": "metric.event.failed.event_failed_ping.Count",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%2221600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A3%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"metric.event.failed.event_failed_ping.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "B",
@@ -599,19 +632,33 @@
           "timeShift": null,
           "title": "Failed Events",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Stats 2"
     },
     {
       "collapse": false,
@@ -626,12 +673,6 @@
           "error": false,
           "fill": 2,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -680,6 +721,7 @@
               ],
               "hide": false,
               "measurement": "metric.event.failed.event_failed_ping.Count",
+              "policy": "default",
               "query": "SELECT median(\"value\") FROM \"metric.event.failed.event_failed_ping.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
               "resultFormat": "time_series",
@@ -723,6 +765,7 @@
               "intervalFactor": 2,
               "measurement": "metric.event.publish.event_publish_ping.Count",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%2221600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A9%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"metric.event.publish.event_publish_ping.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "B",
@@ -762,6 +805,7 @@
               ],
               "hide": false,
               "measurement": "metric.event.publish.event_publish_ping_reply.Count",
+              "policy": "default",
               "query": "SELECT mean(\"value\") FROM \"metric.event.publish.event_publish_ping_reply.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "C",
               "resultFormat": "time_series",
@@ -800,6 +844,7 @@
               ],
               "hide": false,
               "measurement": "metric.event.request.event_request_ping.Count",
+              "policy": "default",
               "query": "SELECT mean(\"value\") FROM \"metric.event.request.event_request_ping.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "D",
               "resultFormat": "time_series",
@@ -825,15 +870,29 @@
           "timeShift": null,
           "title": "Ping Overview",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "individual"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         },
         {
@@ -844,12 +903,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -902,6 +955,7 @@
               "intervalFactor": 2,
               "measurement": "thread_pool.process.RejectedExecutionCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%2221600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A15%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"thread_pool.process.RejectedExecutionCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -941,6 +995,7 @@
               ],
               "hide": false,
               "measurement": "thread_pool.process.ActiveCount",
+              "policy": "default",
               "query": "SELECT mean(\"value\") FROM \"thread_pool.process.ActiveCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "B",
               "resultFormat": "time_series",
@@ -979,6 +1034,7 @@
               ],
               "hide": false,
               "measurement": "metric.process_server.process_execution_resource_busy.Count",
+              "policy": "default",
               "query": "SELECT mean(\"value\") FROM \"metric.process_server.process_execution_resource_busy.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "C",
               "resultFormat": "time_series",
@@ -1004,19 +1060,33 @@
           "timeShift": null,
           "title": "Process Execution",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Stats 3"
     },
     {
       "collapse": false,
@@ -1031,12 +1101,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(27, 43, 216, 0.28)",
             "threshold2": null,
@@ -1044,7 +1108,6 @@
             "thresholdLine": false
           },
           "id": 5,
-          "leftYAxisLabel": "",
           "legend": {
             "avg": false,
             "current": false,
@@ -1063,7 +1126,6 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "rightYAxisLabel": "",
           "seriesOverrides": [],
           "span": 6,
           "stack": true,
@@ -1091,6 +1153,7 @@
               "intervalFactor": 2,
               "measurement": "database.MaxActive",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A20%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"database.MaxActive\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -1135,6 +1198,7 @@
               "intervalFactor": 2,
               "measurement": "database.NumActive",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A20%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"database.NumActive\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "B",
@@ -1178,6 +1242,7 @@
               "intervalFactor": 2,
               "measurement": "database.NumIdle",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A20%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"database.NumIdle\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "C",
@@ -1204,15 +1269,31 @@
           "timeShift": null,
           "title": "DB Stats",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "none",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         },
         {
@@ -1223,12 +1304,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1280,6 +1355,7 @@
               "intervalFactor": 2,
               "measurement": "thread_pool.core.ActiveCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A21%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"thread_pool.core.ActiveCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -1323,6 +1399,7 @@
               "intervalFactor": 2,
               "measurement": "thread_pool.core.RejectedExecutionCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A21%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"thread_pool.core.RejectedExecutionCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "C",
@@ -1366,6 +1443,7 @@
               "intervalFactor": 2,
               "measurement": "thread_pool.process.ActiveCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A21%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"thread_pool.process.ActiveCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "D",
@@ -1409,6 +1487,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.thread.ThreadCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A21%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.thread.ThreadCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "rawQuery": false,
@@ -1453,6 +1532,7 @@
               "intervalFactor": 2,
               "measurement": "thread_pool.process.RejectedExecutionCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A21%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"thread_pool.process.RejectedExecutionCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "rawQuery": false,
@@ -1480,19 +1560,33 @@
           "timeShift": null,
           "title": "Thread Stats",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Stats 4"
     },
     {
       "collapse": false,
@@ -1507,12 +1601,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1564,6 +1652,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.thread.ThreadCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%223601s%22%2C%22end_input%22%3A%222015-11-10%2016%3A29%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.thread.ThreadCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -1590,15 +1679,29 @@
           "timeShift": null,
           "title": "JVM Thread Count",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         },
         {
@@ -1614,6 +1717,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 13,
           "interval": null,
           "links": [],
@@ -1654,6 +1764,7 @@
               "intervalFactor": 2,
               "measurement": "jvm.os.OpenFileDescriptorCount",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%22900s%22%2C%22end_input%22%3A%222015-11-11%2010%3A37%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"jvm.os.OpenFileDescriptorCount\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -1676,7 +1787,7 @@
               "target": "servers.*.jvm.os.OpenFileDescriptorCount"
             }
           ],
-          "thresholds": "0,1024,1500",
+          "thresholds": "1024,1500",
           "title": "Open FIle Descriptors",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -1690,7 +1801,7 @@
           "valueName": "avg"
         }
       ],
-      "title": "New row"
+      "title": "Stats 5"
     },
     {
       "collapse": false,
@@ -1706,12 +1817,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1763,6 +1868,7 @@
               "intervalFactor": 2,
               "measurement": "metric.process_server.process_execution_timeout.Count",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%2221600s%22%2C%22end_input%22%3A%222015-11-10%2016%3A9%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"metric.process_server.process_execution_timeout.Count\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -1789,15 +1895,29 @@
           "timeShift": null,
           "title": "Timeout Events",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "none",
-            "none"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         },
         {
@@ -1808,12 +1928,6 @@
           "error": false,
           "fill": 1,
           "grid": {
-            "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
-            "rightLogBase": 1,
-            "rightMax": null,
-            "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
@@ -1865,6 +1979,7 @@
               "intervalFactor": 2,
               "measurement": "metric.event.time.event_time_ping.Mean",
               "metric": "",
+              "policy": "default",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22%22%2C%22range_input%22%3A%22900s%22%2C%22end_input%22%3A%222015-11-11%2010%3A39%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "query": "SELECT mean(\"value\") FROM \"metric.event.time.event_time_ping.Mean\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
               "refId": "A",
@@ -1891,19 +2006,33 @@
           "timeShift": null,
           "title": "Mean Ping",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "short",
-            "short"
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Stats 6"
     }
   ],
   "time": {
@@ -1948,7 +2077,7 @@
     "list": []
   },
   "refresh": "5s",
-  "schemaVersion": 8,
-  "version": 14,
+  "schemaVersion": 12,
+  "version": 18,
   "links": []
 }

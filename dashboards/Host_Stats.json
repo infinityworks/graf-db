@@ -1,8 +1,10 @@
 {
-  "id": 8,
+  "id": 10,
   "title": "Host Stats",
   "originalTitle": "Host Stats",
-  "tags": [],
+  "tags": [
+    "Hosts"
+  ],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
@@ -12,23 +14,23 @@
     {
       "collapse": false,
       "editable": true,
-      "height": "25px",
+      "height": "100px",
       "panels": [
         {
-          "content": "#Host Metrics \nThis dashboard shows host level metrics gathered from prometheus. Prometheus in turn scrapes the data from the node-exporter scripts deployed as part of the template. You should be able to dynamically adjust the scope of the graphs using the templating above.",
+          "content": "# Host Metrics \nThis dashboard shows host level metrics gathered from prometheus. Prometheus in turn scrapes the data from the node-exporter scripts deployed as part of the template. You should be able to dynamically adjust the scope of the graphs using the templating above.",
           "editable": true,
           "error": false,
-          "id": 20,
+          "id": 26,
           "isNew": true,
           "links": [],
           "mode": "markdown",
           "span": 12,
-          "style": {},
-          "title": "Summary",
+          "title": "",
+          "transparent": true,
           "type": "text"
         }
       ],
-      "title": "New row"
+      "title": "Text"
     },
     {
       "collapse": false,
@@ -37,10 +39,11 @@
       "panels": [
         {
           "aliasColors": {
-            "10.196.94.36:9100": "#629E51",
+            "10.196.94.100:9100": "#BA43A9",
+            "10.196.94.36:9100": "#82B5D8",
             "10.196.94.38:9100": "#3F6833",
-            "10.196.94.46:9100": "#508642",
-            "10.196.94.48:9100": "#7EB26D"
+            "10.196.94.46:9100": "#0A437C",
+            "10.196.94.48:9100": "#EAB839"
           },
           "bars": false,
           "datasource": "Prometheus",
@@ -97,27 +100,49 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22node_load1%22%2C%22range_input%22%3A%223601s%22%2C%22end_input%22%3A%222016-1-19%2020%3A15%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "timeFrom": null,
           "timeShift": null,
           "title": "Load average",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "transparent": false,
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
             "short",
             "short"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Load Average"
     },
     {
       "collapse": false,
@@ -171,44 +196,61 @@
               "calculatedInterval": "2s",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "node_procs_running{instance=~\"$server\"}",
+              "expr": "node_procs_blocked{instance=~\"$server\"}",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
+              "legendFormat": "Blocked - {{instance}}",
               "metric": "",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22sum(rate(node_cpu%7Binstance%3D%5C%2210.196.94.38%3A9100%5C%22%2Cmode!%3D%5C%22idle%5C%22%7D%5B1m%5D)%20*%20100)%20by%20(node_cpu)%20%2F8%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-16%207%3A10%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 2
+              "step": 4
             },
             {
-              "calculatedInterval": "2s",
-              "datasourceErrors": {},
-              "errors": {},
-              "expr": "node_procs_blocked{instance=~\"$server\"}",
+              "expr": "node_procs_running{instance=~\"$server\"}",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
-              "metric": "",
-              "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22sum(rate(node_cpu%7Binstance%3D%5C%2210.196.94.38%3A9100%5C%22%2Cmode!%3D%5C%22idle%5C%22%7D%5B1m%5D)%20*%20100)%20by%20(node_cpu)%20%2F8%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-16%207%3A10%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
+              "legendFormat": "Running - {{instance}}",
               "refId": "B",
-              "step": 2
+              "step": 4
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Procs Summary",
+          "title": "Node Procs",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
-            "none",
+            "percent",
             "short"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Node Procs"
     },
     {
       "collapse": false,
@@ -261,28 +303,50 @@
               "calculatedInterval": "2s",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "node_memory_MemFree{instance=~\"$server\"} / 1048576",
+              "expr": "node_memory_MemAvailable{instance=~\"$server\"} / 1048576",
               "intervalFactor": 2,
               "legendFormat": "{{instance}}",
               "metric": "",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22node_memory_MemAvailable%7Binstance%3D%5C%2210.196.94.100%3A9100%5C%22%7D%20%2F%201048576%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-16%207%3A11%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 2
+              "step": 10
             }
           ],
           "timeFrom": null,
           "timeShift": null,
           "title": "Available Memory",
           "tooltip": {
+            "msResolution": true,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
             "mbytes",
             "short"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         },
         {
@@ -337,7 +401,7 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22node_memory_Committed_AS%7Binstance%3D%5C%2210.196.94.38%3A9100%5C%22%7D%20%2F%201048576%22%2C%22range_input%22%3A%223601s%22%2C%22end_input%22%3A%222016-1-16%207%3A13%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 2,
+              "step": 10,
               "target": ""
             }
           ],
@@ -345,19 +409,232 @@
           "timeShift": null,
           "title": "Comitted Memory",
           "tooltip": {
+            "msResolution": true,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
             "mbytes",
             "short"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Memory 1"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "25px",
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "bytes",
+          "gauge": {
+            "maxValue": 1023,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "100",
+          "id": 23,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "sum(node_memory_MemTotal{instance=~\"$server\"})",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 60
+            }
+          ],
+          "thresholds": "",
+          "title": "Total Memory",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "bytes",
+          "gauge": {
+            "maxValue": 1023,
+            "minValue": null,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "100",
+          "id": 24,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "sum(node_memory_MemFree{instance=~\"$server\"})",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 60
+            }
+          ],
+          "thresholds": "",
+          "title": "Total Memory Free",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "bytes",
+          "gauge": {
+            "maxValue": 1023,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "100",
+          "id": 25,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "sum(node_memory_MemAvailable{instance=~\"$server\"})",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 60
+            }
+          ],
+          "thresholds": "",
+          "title": "Total Memory Available",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        }
+      ],
+      "title": "Memory 2"
     },
     {
       "collapse": false,
@@ -417,22 +694,44 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22rate(node_disk_read_time_ms%7Binstance%3D%5C%2210.196.94.100%3A9100%5C%22%2Cdevice!%3D%5C%22sr0%5C%22%7D%5B30s%5D)%22%2C%22range_input%22%3A%2286400s%22%2C%22end_input%22%3A%222016-1-7%2014%3A58%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 2
+              "step": 10
             }
           ],
           "timeFrom": null,
           "timeShift": null,
           "title": "Disk Time",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
             "ms",
             "short"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         },
         {
@@ -486,26 +785,48 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.100:9090/graph#%5B%7B%22expr%22%3A%22node_filesystem_free%7Binstance%3D%5C%2210.196.94.100%3A9100%5C%22%2Cmountpoint%3D%5C%22%2F%5C%22%7D%22%2C%22range_input%22%3A%2286400s%22%2C%22end_input%22%3A%222016-1-7%2014%3A58%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3Afalse%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 2
+              "step": 10
             }
           ],
           "timeFrom": null,
           "timeShift": null,
           "title": "Free Disk",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
             "bytes",
             "short"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Disk"
     },
     {
       "collapse": false,
@@ -537,8 +858,8 @@
           "styles": [
             {
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "pattern": "",
-              "type": "date"
+              "pattern": "Metric",
+              "type": "string"
             },
             {
               "colorMode": "row",
@@ -548,10 +869,9 @@
                 "rgba(50, 172, 45, 0.97)"
               ],
               "decimals": 0,
-              "pattern": "/.*/",
+              "pattern": "Current",
               "thresholds": [
                 "0",
-                "1",
                 "1"
               ],
               "type": "number",
@@ -564,31 +884,33 @@
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
               "refId": "A",
-              "step": 2
+              "step": 10
             }
           ],
           "title": "Host Health - Rancher",
           "transform": "timeseries_aggregations",
+          "transparent": false,
           "type": "table"
         },
         {
           "aliasColors": {},
-          "bars": true,
+          "bars": false,
           "datasource": "Prometheus",
           "editable": true,
           "error": false,
-          "fill": 1,
+          "fill": 3,
           "grid": {
             "leftLogBase": 1,
-            "leftMax": null,
-            "leftMin": null,
+            "leftMax": 1,
+            "leftMin": 0,
             "rightLogBase": 1,
             "rightMax": null,
             "rightMin": null,
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
           },
           "id": 19,
           "isNew": true,
@@ -602,7 +924,109 @@
             "values": false
           },
           "lines": true,
-          "linewidth": 2,
+          "linewidth": 0,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rancher_hosts",
+              "intervalFactor": 1,
+              "legendFormat": "{{name}}",
+              "refId": "A",
+              "step": 5
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Host Availability",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "value_type": "individual"
+          },
+          "transparent": false,
+          "type": "graph",
+          "x-axis": true,
+          "xaxis": {
+            "show": false
+          },
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "Host Health Status",
+              "logBase": 1,
+              "max": 1,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "title": "Hosts Health"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "Prometheus",
+          "decimals": 0,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": 0,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 20,
+          "isNew": true,
+          "leftYAxisLabel": "Packets",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 3,
           "links": [],
           "nullPointMode": "connected",
           "percentage": false,
@@ -610,39 +1034,76 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 6,
-          "stack": true,
+          "span": 12,
+          "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rancher_hosts",
+              "expr": "node_netstat_Ip_InDiscards{instance=~\"$server\"}",
               "intervalFactor": 2,
-              "legendFormat": "{{name}}",
+              "legendFormat": "In - Discards",
               "refId": "A",
-              "step": 2
+              "step": 4
+            },
+            {
+              "expr": "node_netstat_Ip_OutDiscards{instance=~\"$server\"}",
+              "intervalFactor": 2,
+              "legendFormat": "Out - Discards",
+              "refId": "B",
+              "step": 4
+            },
+            {
+              "expr": "node_network_receive_drop{device=\"eth0\", instance=~\"$server\"}",
+              "intervalFactor": 2,
+              "legendFormat": "Eth0 Receive Drops",
+              "refId": "C",
+              "step": 4
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Hosts Available",
+          "title": "Network Stats",
           "tooltip": {
+            "msResolution": false,
             "shared": true,
             "value_type": "cumulative"
           },
+          "transparent": false,
           "type": "graph",
           "x-axis": true,
+          "xaxis": {
+            "show": true
+          },
           "y-axis": true,
           "y_formats": [
-            "short",
-            "short"
+            "none",
+            "none"
+          ],
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
           ]
         }
       ],
-      "title": "New row"
+      "title": "Network"
     }
   ],
   "time": {
-    "from": "now-15m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -679,12 +1140,16 @@
   "templating": {
     "list": [
       {
-        "allFormat": "pipe",
+        "allFormat": "glob",
         "current": {
+          "tags": [],
           "text": "All",
-          "value": "52.49.126.149:9100|52.49.217.179:9100"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "Prometheus",
+        "hide": 0,
         "hideLabel": false,
         "includeAll": true,
         "label": "Container Host",
@@ -693,23 +1158,23 @@
         "name": "server",
         "options": [
           {
+            "selected": true,
             "text": "All",
-            "value": "52.49.126.149:9100|52.49.217.179:9100",
-            "selected": true
+            "value": "$__all"
           },
           {
-            "text": "52.49.126.149:9100",
-            "value": "52.49.126.149:9100",
-            "selected": false
+            "selected": false,
+            "text": "10.42.167.45:9100",
+            "value": "10.42.167.45:9100"
           },
           {
-            "text": "52.49.217.179:9100",
-            "value": "52.49.217.179:9100",
-            "selected": false
+            "selected": false,
+            "text": "10.42.32.31:9100",
+            "value": "10.42.32.31:9100"
           }
         ],
         "query": "node_boot_time",
-        "refresh": true,
+        "refresh": 0,
         "regex": "/instance=\\\"(.*?)\\\"/",
         "type": "query",
         "useTags": false
@@ -719,8 +1184,23 @@
   "annotations": {
     "list": []
   },
-  "refresh": "10s",
-  "schemaVersion": 8,
-  "version": 43,
-  "links": []
+  "refresh": "30s",
+  "schemaVersion": 12,
+  "version": 8,
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "Prometheus Node Exporter",
+      "type": "link",
+      "url": "https://github.com/prometheus/node_exporter"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "Prometheus Rancher Exporter",
+      "type": "link",
+      "url": "https://github.com/infinityworksltd/prometheus-rancher-exporter"
+    }
+  ]
 }

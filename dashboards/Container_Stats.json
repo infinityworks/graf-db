@@ -1,8 +1,12 @@
 {
-  "id": 9,
-  "title": "Rancher Services",
-  "originalTitle": "Rancher Services",
-  "tags": [],
+  "id": 6,
+  "title": "Container Stats",
+  "originalTitle": "Container Stats",
+  "tags": [
+    "Services",
+    "Containers",
+    "Hosts"
+  ],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
@@ -13,29 +17,6 @@
       "collapse": false,
       "editable": true,
       "height": "150px",
-      "panels": [
-        {
-          "content": "<h1>Rancher Services</h1>\n\nThis dashboard shows information about Rancher Services and Stack present. It also shows how many services are present and total active services and stack information is provided.",
-          "editable": true,
-          "error": false,
-          "id": 6,
-          "isNew": true,
-          "links": [],
-          "mode": "html",
-          "span": 12,
-          "style": {
-            "font-size": "24pt"
-          },
-          "title": "Summary",
-          "type": "text"
-        }
-      ],
-      "title": "Row"
-    },
-    {
-      "collapse": false,
-      "editable": true,
-      "height": "250px",
       "panels": [
         {
           "cacheTimeout": null,
@@ -50,9 +31,224 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 6,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "span": 8,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": true,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "count(container_last_seen)",
+              "intervalFactor": 2,
+              "refId": "A",
+              "step": 600
+            }
+          ],
+          "thresholds": "",
+          "title": "Total Running Containers",
+          "type": "singlestat",
+          "valueFontSize": "110%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "content": "# Container Stats\n\nThis is an example of a dashboard showing information derived from both the Google cAdvisor process that runs within the Rancher agent process, and the Prometheus Rancher Exporter. \nThis data is scraped by prometheus and displayed through grafana.",
+          "editable": true,
+          "error": false,
+          "id": 14,
+          "isNew": true,
+          "links": [],
+          "mode": "markdown",
+          "span": 4,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "title": "Graphs"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "150px",
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "gbytes",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 8,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": true,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "sum(node_memory_MemTotal) / 1024 /1024 / 1024",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 600
+            }
+          ],
+          "thresholds": "",
+          "title": "Total Host Memory",
+          "type": "singlestat",
+          "valueFontSize": "110%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "gbytes",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 7,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "80%",
+          "prefix": "",
+          "prefixFontSize": "80%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": true,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "sum(container_memory_usage_bytes) / 1024 / 1024 / 1024",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 600
+            }
+          ],
+          "thresholds": "",
+          "title": "Total Container Memory Used",
+          "type": "singlestat",
+          "valueFontSize": "110%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "150px",
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "height": "",
           "hideTimeOverride": true,
-          "id": 2,
+          "id": 11,
           "interval": null,
           "isNew": true,
           "links": [],
@@ -63,7 +259,7 @@
           "postfixFontSize": "50%",
           "prefix": "",
           "prefixFontSize": "50%",
-          "span": 6,
+          "span": 4,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": true,
@@ -76,14 +272,13 @@
               "intervalFactor": 2,
               "legendFormat": "",
               "refId": "A",
-              "step": 2,
-              "interval": "100ms"
+              "step": 2
             }
           ],
           "thresholds": "",
-          "timeFrom": "5m",
-          "timeShift": "5m",
-          "title": "Number of Rancher Stack",
+          "timeFrom": "5s",
+          "timeShift": "5s",
+          "title": "Total Stacks in Rancher",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -102,14 +297,22 @@
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
-            "rgba(241, 18, 9, 0.97)"
+            "rgba(50, 172, 45, 0.97)"
           ],
           "datasource": "Prometheus",
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "height": "",
           "hideTimeOverride": true,
-          "id": 1,
+          "id": 12,
           "interval": null,
           "isNew": true,
           "links": [],
@@ -119,37 +322,33 @@
           "postfix": "",
           "postfixFontSize": "50%",
           "prefix": "",
-          "prefixFontSize": "80%",
-          "span": 6,
+          "prefixFontSize": "50%",
+          "span": 4,
           "sparkline": {
-            "fillColor": "rgba(32, 90, 172, 0.18)",
+            "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": true,
-            "lineColor": "rgb(193, 31, 99)",
+            "lineColor": "rgb(241, 4, 73)",
             "show": true
           },
           "targets": [
             {
               "expr": "count(rancher_services)",
               "intervalFactor": 2,
+              "legendFormat": "",
               "refId": "A",
-              "step": 21
-            },
-            {
-              "expr": "",
-              "intervalFactor": 2,
-              "refId": "B"
+              "step": 2
             }
           ],
           "thresholds": "",
-          "timeFrom": "15m",
+          "timeFrom": "5s",
           "timeShift": "5s",
-          "title": "Number of Rancher Services",
+          "title": "Total Services in Rancher",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
             {
               "op": "=",
-              "text": "No Rancher Service Present",
+              "text": "No Rancher Stack Present",
               "value": "0"
             }
           ],
@@ -162,129 +361,6 @@
       "collapse": false,
       "editable": true,
       "height": "250px",
-      "panels": [
-        {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": true,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Prometheus",
-          "editable": true,
-          "error": false,
-          "format": "none",
-          "hideTimeOverride": true,
-          "id": 5,
-          "interval": null,
-          "isNew": true,
-          "links": [],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "span": 6,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": true,
-            "lineColor": "rgb(5, 241, 192)",
-            "show": true
-          },
-          "targets": [
-            {
-              "expr": "sum(rancher_environment)",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 21
-            }
-          ],
-          "thresholds": "",
-          "timeFrom": "15m",
-          "timeShift": "5s",
-          "title": "Active Rancher Stack",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "No Active Rancher Stack Present",
-              "value": "0"
-            }
-          ],
-          "valueName": "avg"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": true,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Prometheus",
-          "editable": true,
-          "error": false,
-          "format": "none",
-          "hideTimeOverride": true,
-          "id": 3,
-          "interval": null,
-          "isNew": true,
-          "links": [],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "span": 6,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": true,
-            "lineColor": "rgb(241, 101, 18)",
-            "show": true
-          },
-          "targets": [
-            {
-              "expr": "sum(rancher_services)",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 21
-            },
-            {
-              "expr": "",
-              "intervalFactor": 2,
-              "refId": "B"
-            }
-          ],
-          "thresholds": "",
-          "timeFrom": "15m",
-          "timeShift": "5s",
-          "title": "Active Rancher Service",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "No Active Rancher Service Present",
-              "value": "0"
-            }
-          ],
-          "valueName": "avg"
-        }
-      ],
-      "title": "New row"
-    },
-    {
-      "collapse": false,
-      "editable": true,
-      "height": "350px",
       "panels": [
         {
           "columns": [
@@ -297,15 +373,14 @@
           "editable": true,
           "error": false,
           "fontSize": "100%",
-          "hideTimeOverride": true,
-          "id": 7,
+          "id": 13,
           "isNew": true,
           "links": [],
           "pageSize": null,
           "scroll": true,
           "showHeader": true,
           "sort": {
-            "col": null,
+            "col": 0,
             "desc": false
           },
           "span": 12,
@@ -314,44 +389,35 @@
               "colorMode": "row",
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
-                "rgba(4, 174, 53, 0.89)",
+                "rgba(6, 200, 6, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 0,
-              "pattern": "Current",
+              "pattern": "/.*/",
               "thresholds": [
                 "0",
                 "1"
               ],
               "type": "number",
-              "unit": "short"
+              "unit": "none"
             }
           ],
           "targets": [
             {
               "expr": "rancher_services",
-              "interval": "2s",
-              "intervalFactor": 3,
+              "intervalFactor": 2,
               "legendFormat": "{{name}}",
-              "metric": "Services",
+              "metric": "",
               "refId": "A",
-              "step": 6
+              "step": 30
             }
           ],
-          "timeFrom": "5s",
-          "timeShift": "5s",
-          "title": "Rancher Services Status",
+          "title": "Active Rancher Services",
           "transform": "timeseries_aggregations",
           "type": "table"
         }
       ],
-      "title": "New row"
-    },
-    {
-      "collapse": false,
-      "editable": true,
-      "height": "250px",
-      "panels": [],
       "title": "New row"
     }
   ],
@@ -360,6 +426,10 @@
     "to": "now"
   },
   "timepicker": {
+    "collapse": false,
+    "enable": true,
+    "notice": false,
+    "now": true,
     "refresh_intervals": [
       "5s",
       "10s",
@@ -372,6 +442,7 @@
       "2h",
       "1d"
     ],
+    "status": "Stable",
     "time_options": [
       "5m",
       "15m",
@@ -382,7 +453,8 @@
       "2d",
       "7d",
       "30d"
-    ]
+    ],
+    "type": "timepicker"
   },
   "templating": {
     "list": []
@@ -390,7 +462,30 @@
   "annotations": {
     "list": []
   },
-  "schemaVersion": 8,
-  "version": 28,
-  "links": []
+  "refresh": "5s",
+  "schemaVersion": 12,
+  "version": 16,
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "Google cAdvisor",
+      "type": "link",
+      "url": "https://github.com/google/cadvisor"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "RanchEye cAdvisor Proxy",
+      "type": "link",
+      "url": "https://github.com/infinityworksltd/ranch-eye"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "Prometheus Rancher Exporter",
+      "type": "link",
+      "url": "https://github.com/infinityworksltd/prometheus-rancher-exporter"
+    }
+  ]
 }

@@ -2,7 +2,10 @@
   "id": 2,
   "title": "Stack Status - Prometheus",
   "originalTitle": "Stack Status - Prometheus",
-  "tags": [],
+  "tags": [
+    "Prometheus",
+    "Services"
+  ],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
@@ -15,7 +18,7 @@
       "height": "25px",
       "panels": [
         {
-          "content": "# Stack Status\n\nThis dashboard was put together to demonstrate service & stack level metrics pulled from the Rancher API. \nThis is achieved through the rancher-api-integration service, a simple little application that's lightweight and open-source.\n\nThe benefit here being you can customise such dashboards to report on the health of your applications and services running on-top of rancher without having to provide access to the Rancher UI itself.",
+          "content": "# Stack Status\n\nThis dashboard was put together to demonstrate service & stack level metrics pulled from the Rancher API. \nThis is achieved through the rancher-api-integration service, a simple little application that's lightweight and open-source.\nThe benefit here being you can customise such dashboards to report on the health of your applications and services running on-top of rancher without having to provide access to the Rancher UI itself.",
           "editable": true,
           "error": false,
           "id": 8,
@@ -24,7 +27,8 @@
           "mode": "markdown",
           "span": 12,
           "style": {},
-          "title": "Summary",
+          "title": "",
+          "transparent": true,
           "type": "text"
         }
       ],
@@ -48,6 +52,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": false
+          },
           "id": 3,
           "interval": null,
           "links": [],
@@ -76,10 +87,10 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 1200
+              "step": 1800
             }
           ],
-          "thresholds": "0,1,1",
+          "thresholds": "0,1",
           "title": "Prometheus",
           "type": "singlestat",
           "valueFontSize": "100%",
@@ -110,6 +121,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 4,
           "interval": null,
           "links": [],
@@ -138,10 +156,10 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 1200
+              "step": 1800
             }
           ],
-          "thresholds": "0,1,1",
+          "thresholds": "0,1",
           "title": "Grafana",
           "type": "singlestat",
           "valueFontSize": "100%",
@@ -172,6 +190,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 5,
           "interval": null,
           "links": [],
@@ -200,10 +225,10 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 1200
+              "step": 1800
             }
           ],
-          "thresholds": "0,1,1",
+          "thresholds": "0,1",
           "title": "Node Exporter",
           "type": "singlestat",
           "valueFontSize": "100%",
@@ -242,6 +267,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 7,
           "interval": null,
           "links": [],
@@ -270,10 +302,10 @@
               "metric": "",
               "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 1200
+              "step": 1800
             }
           ],
-          "thresholds": "0,1,1",
+          "thresholds": "0,1",
           "title": "Ranch-Eye",
           "type": "singlestat",
           "valueFontSize": "100%",
@@ -304,6 +336,13 @@
           "editable": true,
           "error": false,
           "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
           "id": 6,
           "interval": null,
           "links": [],
@@ -326,17 +365,86 @@
               "calculatedInterval": "1m",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "rancher_services{name=~\".*/rancher_api_integration\"}",
+              "expr": "rancher_services{name=~\".*/prometheus_rancher_exporter\"}",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "",
               "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
               "refId": "A",
-              "step": 1200
+              "step": 1800
             }
           ],
-          "thresholds": "0,1,1",
-          "title": "API Integration",
+          "thresholds": "0,1",
+          "title": "Prometheus Rancher Exporter",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "Healthy",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "Degraded",
+              "value": "0"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "Prometheus",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 9,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "calculatedInterval": "1m",
+              "datasourceErrors": {},
+              "errors": {},
+              "expr": "rancher_services{name=~\".*/influxdb\"}",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "prometheusLink": "http://10.196.94.101:9090/graph#%5B%7B%22expr%22%3A%22rancher_services%7Bname%3D%5C%22%24environment_name_urs%2FAudit%5C%22%7D%22%2C%22range_input%22%3A%223600s%22%2C%22end_input%22%3A%222016-1-20%2013%3A8%22%2C%22step_input%22%3A%22%22%2C%22tab%22%3A0%7D%5D",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": "0,1",
+          "title": "Influx DB",
           "type": "singlestat",
           "valueFontSize": "100%",
           "valueMaps": [
@@ -399,7 +507,15 @@
     "list": []
   },
   "refresh": "5s",
-  "schemaVersion": 8,
-  "version": 23,
-  "links": []
+  "schemaVersion": 12,
+  "version": 31,
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "Prometheus Rancher Exporter",
+      "type": "link",
+      "url": "https://github.com/infinityworksltd/prometheus-rancher-exporter"
+    }
+  ]
 }
