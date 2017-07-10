@@ -17,7 +17,7 @@
       "height": "25px",
       "panels": [
         {
-          "content": "# Rancher Statistics\n\nThis dashboard exports metrics from within the rancher server container its-self. This is done through modifying the `graphite.host` value in the rancher API. This is for now a manual step and requires a restart of the rancher server container to take affect. Instructions on how to do this can be found [here](https://github.com/infinityworksltd/Guide_Rancher_Monitoring).\n",
+          "content": "# Rancher Statistics\n\nThis dashboard exports metrics from within the rancher server container its-self. This is done through modifying the `graphite.host` value in the rancher API. This is for now a manual step and requires a restart of the rancher server container to take affect. Instructions on how to do this can be found [here](https://github.com/infinityworks/Guide_Rancher_Monitoring).\n",
           "editable": true,
           "error": false,
           "id": 16,
