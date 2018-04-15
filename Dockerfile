@@ -2,7 +2,9 @@
 FROM alpine
 MAINTAINER Ed Marshall (ed.marshall@infinityworks.com)
 
-RUN mkdir -p /var/lib/grafana
-ADD grafana.db /var/lib/grafana/
+RUN mkdir -p /var/lib/_grafana
+COPY grafana.db /var/lib/_grafana
+COPY entrypoint.sh /usr/sbin/entrypoint.sh
+RUN chmod +x /usr/sbin/entrypoint.sh
 
-CMD /bin/bash
+ENTRYPOINT /usr/sbin/entrypoint.sh
